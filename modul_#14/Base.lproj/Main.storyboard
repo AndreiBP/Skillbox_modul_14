@@ -93,7 +93,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="ToDoTasks" id="jyQ-mp-ywP">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="duX-P7-Xwg">
+                        <barButtonItem key="leftBarButtonItem" title="Удалить" id="duX-P7-Xwg">
                             <connections>
                                 <action selector="editButton:" destination="JFp-xE-RRV" id="Lzl-3I-gX7"/>
                             </connections>
