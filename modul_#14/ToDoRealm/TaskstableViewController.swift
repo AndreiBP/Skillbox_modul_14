@@ -4,18 +4,18 @@
 //
 //  Created by Андрей Балобанов on 04.03.2021.
 //
-
 import UIKit
+
 class TaskstableViewController: UITableViewController {
-   
-    
+       
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
-        
+    
     var taskNew = Tasks() //доступ к классу Realm
     
     var index = 0 // индекс нажатой ячейки
+    var taskImage = UIImage(named: "galka2")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,25 +70,28 @@ class TaskstableViewController: UITableViewController {
     
     //свайп справа "удаления", установил так же отметку "выполнено"
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-    //var aaa = taskNew.newTask[indexPath.row]
+  //  var aaa = taskNew.newTask[indexPath.row]
         
         let performed = UIContextualAction(style: .destructive, title: "Выполнено") {  (contextualAction, view , boolValue) in
-            let cell = tableView.cellForRow(at: indexPath)
-            if  cell?.accessoryType == UITableViewCell.AccessoryType.none {
-                cell?.accessoryType = .checkmark
-                cell?.backgroundColor = UIColor.darkGray
+            
+           let cell = tableView.cellForRow(at: indexPath)
+            
+            if  cell?.imageView?.image == .none {
+            cell?.imageView?.image = UIImage(named: "galka2")
                 
-                //  подскажите как сохранить checkmark в Realm, checkmark работает но при повторной загрузке пропадает
+                self.taskNew.taskSaveCheckmark()
                 
+                //tableView.reloadData()
                 
-            } else { cell?.accessoryType = .none; cell?.backgroundColor = .none}
+            } else { cell?.imageView?.image = .none }
+            
             tableView.reloadData()
             }
         performed.backgroundColor = .darkGray
         
         let performed1 = UIContextualAction(style: .destructive, title: "Удалить") {  (contextualAction, view , boolValue) in
             self.taskNew.taskDeleteInt(indexI: indexPath.row)
-            tableView.reloadData()
+          tableView.reloadData()
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [performed, performed1])
         return swipeActions
