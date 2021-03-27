@@ -12,7 +12,6 @@ import UIKit
 class Tasks: Object {
     
    @objc dynamic var task: String? = " "
-  // var imageViewg = UIImage(named: "galka2")
     var imageViewg = NSData()
     var newTask: Results<Tasks>! // массив значений базы данных
 

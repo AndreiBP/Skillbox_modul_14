@@ -73,9 +73,7 @@ class TaskstableViewController: UITableViewController {
     
     //свайп справа "удаления", установил так же отметку "выполнено"
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        //var aaa = taskNew.newTask[indexPath.row]
-        
+            
         let performed = UIContextualAction(style: .destructive, title: "Выполнено") {  (contextualAction, view , boolValue) in
             
             let cell = tableView.cellForRow(at: indexPath)
