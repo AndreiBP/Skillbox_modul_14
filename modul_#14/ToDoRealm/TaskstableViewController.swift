@@ -57,8 +57,11 @@ class TaskstableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let task = self.taskNew.newTask[indexPath.row].task
         cell.textLabel?.text = task
+
+        if taskNew.imageBool == true {
+            cell.imageView?.image = UIImage(named: "galka2")
+        }
         
-        //cell.imageView?.image = taskNew.imageView
     return cell
       
     }
@@ -78,13 +81,13 @@ class TaskstableViewController: UITableViewController {
             
             let cell = tableView.cellForRow(at: indexPath)
             
-            if cell?.imageView?.image == UIImage(named: "galka2") {
+        if cell?.imageView?.image == UIImage(named: "galka2") {
                 cell?.imageView?.image = .none
-                self.taskNew.taskSaveImageTable()
+            self.taskNew.taskSaveImageTable(Bool1: false, index1: indexPath.row)
                 tableView.reloadData()
             }  else {
                 cell?.imageView?.image = UIImage(named: "galka2")
-                self.taskNew.taskSaveImageTable()
+                self.taskNew.taskSaveImageTable(Bool1: true, index1: indexPath.row)
                 tableView.reloadData()
             }
         }
