@@ -15,12 +15,13 @@ class TaskstableViewController: UITableViewController {
     var taskNew = Tasks() //доступ к классу Realm
     
     var index = 0 // индекс нажатой ячейки
-    var taskImage = UIImage(named: "galka2")
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        taskNew.allObject()
+       // DispatchQueue.main.async {
+            self.taskNew.allObject()
         self.tableView.reloadData()
+       // }
     }
     
     // при нажатии на кнопку edit появляется строка удаление
@@ -56,6 +57,8 @@ class TaskstableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let task = self.taskNew.newTask[indexPath.row].task
         cell.textLabel?.text = task
+        
+        //cell.imageView?.image = taskNew.imageView
     return cell
       
     }
@@ -70,23 +73,23 @@ class TaskstableViewController: UITableViewController {
     
     //свайп справа "удаления", установил так же отметку "выполнено"
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-  //  var aaa = taskNew.newTask[indexPath.row]
+        
+        //var aaa = taskNew.newTask[indexPath.row]
         
         let performed = UIContextualAction(style: .destructive, title: "Выполнено") {  (contextualAction, view , boolValue) in
             
-           let cell = tableView.cellForRow(at: indexPath)
+            let cell = tableView.cellForRow(at: indexPath)
             
-            if  cell?.imageView?.image == .none {
-            cell?.imageView?.image = UIImage(named: "galka2")
-                
-                self.taskNew.taskSaveCheckmark()
-                
-                //tableView.reloadData()
-                
-            } else { cell?.imageView?.image = .none }
-            
-            tableView.reloadData()
+            if cell?.imageView?.image == UIImage(named: "galka2") {
+                cell?.imageView?.image = .none
+                self.taskNew.taskSaveImageTable()
+                tableView.reloadData()
+            }  else {
+                cell?.imageView?.image = UIImage(named: "galka2")
+                self.taskNew.taskSaveImageTable()
+                tableView.reloadData()
             }
+        }
         performed.backgroundColor = .darkGray
         
         let performed1 = UIContextualAction(style: .destructive, title: "Удалить") {  (contextualAction, view , boolValue) in

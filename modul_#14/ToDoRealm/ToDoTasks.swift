@@ -12,7 +12,8 @@ import UIKit
 class Tasks: Object {
     
    @objc dynamic var task: String? = " "
-   var data1 = NSData()
+  // var imageViewg = UIImage(named: "galka2")
+    var imageViewg = NSData()
     var newTask: Results<Tasks>! // массив значений базы данных
 
     //показ всех обьектов
@@ -39,18 +40,14 @@ class Tasks: Object {
                     realm.add(tk)
             }
         }
-    
-    
     // добавление в реалм картинки
-    func taskSaveCheckmark() {
-       
+    func taskSaveImageTable() {
         let d = NSData(data: #imageLiteral(resourceName: "galka2").pngData()!)
-        let workout = newTask.first
-                let realm = try! Realm()
-                try! realm.write {
-                    workout?.data1 = d
-                    print(d)
-                }}
-
+        let realm = try! Realm()
+                        try! realm.write {
+                            self.imageViewg = d
+                            print(imageViewg)
+                        }
+    }
     }
 
