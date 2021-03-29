@@ -9,8 +9,6 @@ import UIKit
 
 class ToDoSecondVC: UIViewController {
     
-    var taskNew = Tasks() //доступ к классу Realm
-    
     @IBOutlet weak var saveButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var insertButtonoutlet: UIBarButtonItem!
     @IBOutlet weak var taskTextView: UITextView!
@@ -33,12 +31,12 @@ class ToDoSecondVC: UIViewController {
     
     // кнопка сохранения нового значения в базу данных
     @IBAction func SaveButton(_ sender: Any) {
-        taskNew.insertText(tasktextField: taskTextView.text)
+        functionTask.shared.insertText(tasktextField: taskTextView.text)
         }
    
     // кнопка редактирования значения в базе данных
     @IBAction func insertButton(_ sender: Any) {
-        taskNew.insertText(tasktextField: taskTextView.text)
+        functionTask.shared.insertText(tasktextField: taskTextView.text)
     }
 
     }

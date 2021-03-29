@@ -13,6 +13,7 @@
 		7233D3AB25F0B7240008DF86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7233D3A925F0B7240008DF86 /* Main.storyboard */; };
 		7233D3AD25F0B7250008DF86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7233D3AC25F0B7250008DF86 /* Assets.xcassets */; };
 		7233D3B025F0B7250008DF86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7233D3AE25F0B7250008DF86 /* LaunchScreen.storyboard */; };
+		7274D0582610EFEA004574B2 /* ToDoRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274D0572610EFEA004574B2 /* ToDoRealm.swift */; };
 		7277E52725F10AA60052FA7D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7277E52625F10AA60052FA7D /* Realm */; };
 		7277E52925F10AA60052FA7D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7277E52825F10AA60052FA7D /* RealmSwift */; };
 		7277E52D25F10E790052FA7D /* UserDefaultsTaskOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7277E52C25F10E790052FA7D /* UserDefaultsTaskOne.swift */; };
@@ -30,6 +31,7 @@
 		7233D3AC25F0B7250008DF86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7233D3AF25F0B7250008DF86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7233D3B125F0B7250008DF86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7274D0572610EFEA004574B2 /* ToDoRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRealm.swift; sourceTree = "<group>"; };
 		7277E52C25F10E790052FA7D /* UserDefaultsTaskOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsTaskOne.swift; sourceTree = "<group>"; };
 		7277E53325F142720052FA7D /* ToDoTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTasks.swift; sourceTree = "<group>"; };
 		7277E53625F1431B0052FA7D /* TaskstableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskstableViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				7277E53325F142720052FA7D /* ToDoTasks.swift */,
 				7277E53625F1431B0052FA7D /* TaskstableViewController.swift */,
 				7277E54025F39DE70052FA7D /* ToDoSecondVC.swift */,
+				7274D0572610EFEA004574B2 /* ToDoRealm.swift */,
 			);
 			path = ToDoRealm;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7277E54125F39DE70052FA7D /* ToDoSecondVC.swift in Sources */,
+				7274D0582610EFEA004574B2 /* ToDoRealm.swift in Sources */,
 				7277E53725F1431B0052FA7D /* TaskstableViewController.swift in Sources */,
 				7277E53425F142720052FA7D /* ToDoTasks.swift in Sources */,
 				7277E52D25F10E790052FA7D /* UserDefaultsTaskOne.swift in Sources */,

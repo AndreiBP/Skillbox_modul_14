@@ -12,16 +12,16 @@ class TaskstableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    var taskNew = Tasks() //доступ к классу Realm
+    //let taskNew = Tasks() //доступ к классу Realm
+   
+    let realData = functionTask.shared
     
     var index = 0 // индекс нажатой ячейки
         
     override func viewDidLoad() {
         super.viewDidLoad()
-       // DispatchQueue.main.async {
-            self.taskNew.allObject()
-        self.tableView.reloadData()
-       // }
+        realData.allObject()
+      self.tableView.reloadData()
     }
     
     // при нажатии на кнопку edit появляется строка удаление
@@ -41,7 +41,8 @@ class TaskstableViewController: UITableViewController {
         else { if unwindSegue.identifier == "show3" {
             guard let source = unwindSegue.source as? ToDoSecondVC else { return }
            source.insertButton(Any.self)
-            taskNew.taskDeleteInt(indexI: index)
+            functionTask.shared.taskDeleteInt(indexI: index)
+            //taskNew.taskDeleteInt(indexI: index)
             }
         }
     }
@@ -49,21 +50,19 @@ class TaskstableViewController: UITableViewController {
     // количество строк
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return taskNew.newTask.count
+        return realData.newTask.count
     }
 
     // обычное заполнение таблицы существующими значениями
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let task = self.taskNew.newTask[indexPath.row].task
+        let task  = self.realData.newTask[indexPath.row].task
         cell.textLabel?.text = task
-
-        if taskNew.imageBool == true {
-            cell.imageView?.image = UIImage(named: "galka2")
-        }
-        
+            let task2 = self.realData.newTask[indexPath.row].imageBool
+            if  task2 == true {
+                    cell.imageView?.image = UIImage(named: "galka2")
+                }
     return cell
-      
     }
     
     // Override to support editing the table view. - редактирование ячейки
@@ -81,20 +80,20 @@ class TaskstableViewController: UITableViewController {
             
             let cell = tableView.cellForRow(at: indexPath)
             
-        if cell?.imageView?.image == UIImage(named: "galka2") {
-                cell?.imageView?.image = .none
-            self.taskNew.taskSaveImageTable(Bool1: false, index1: indexPath.row)
+            if  cell?.imageView?.image == .none {
+                cell?.imageView?.image = UIImage(named: "galka2")
+            functionTask.shared.taskSaveImageTable(Bool1: true, index1: indexPath.row)
                 tableView.reloadData()
             }  else {
-                cell?.imageView?.image = UIImage(named: "galka2")
-                self.taskNew.taskSaveImageTable(Bool1: true, index1: indexPath.row)
+                cell?.imageView?.image = .none
+                functionTask.shared.taskSaveImageTable(Bool1: false, index1: indexPath.row)
                 tableView.reloadData()
             }
         }
         performed.backgroundColor = .darkGray
         
         let performed1 = UIContextualAction(style: .destructive, title: "Удалить") {  (contextualAction, view , boolValue) in
-            self.taskNew.taskDeleteInt(indexI: indexPath.row)
+            functionTask.shared.taskDeleteInt(indexI: indexPath.row)
           tableView.reloadData()
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [performed, performed1])
@@ -107,7 +106,7 @@ class TaskstableViewController: UITableViewController {
        //передача содержимого нажатой ячейки в textField контроллера ToDoSecondVC
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let todoSecondVC = storyboard.instantiateViewController(identifier: "aaa") as? ToDoSecondVC else { return }
-        let nT = taskNew.newTask[indexPath.row]
+        let nT = realData.newTask[indexPath.row]
         index = indexPath.row
         todoSecondVC.tTV = nT.task ?? "nil"
         show(todoSecondVC, sender: nil)

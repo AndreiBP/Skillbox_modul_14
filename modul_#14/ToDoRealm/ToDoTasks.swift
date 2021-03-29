@@ -4,38 +4,36 @@
 //
 //  Created by Андрей Балобанов on 04.03.2021.
 //
-
 import RealmSwift
 import Foundation
 import UIKit
 
-class Tasks: Object {
+//class Tasks: Object {
+class functionTask {
+        
+   static let shared = functionTask()
     
-   @objc dynamic var task: String? = " "
-    var imageBool = false
+   var newTask: Results<Tasks>! // массив значений базы данных
     
-    
-    var newTask: Results<Tasks>! // массив значений базы данных
-
     //показ всех обьектов
     func allObject() {
         let realm = try! Realm()
-        self.newTask = realm.objects(Tasks.self)
+        newTask = realm.objects(Tasks.self)
     }
     
     // сохранение редактируемых данны и удаление нажатой ячейки что бы не было копии
     func taskDeleteInt(indexI: Int) {
         let realm = try! Realm()
         try! realm.write {
-            let tk = self.newTask[indexI]
+            let tk = newTask[indexI]
             realm.delete(tk) }
     }
     
     //кнопка сохранения и редактирования старого(нового) значения в базу данных
     func insertText(tasktextField: String) {
-        let b = tasktextField
+        let c = tasktextField
         let tk = Tasks()
-        tk.task = b
+        tk.task = c
                 let realm = try! Realm()
                 try! realm.write {
                     realm.add(tk)
@@ -43,11 +41,11 @@ class Tasks: Object {
         }
     // добавление в реалм картинки
     func taskSaveImageTable(Bool1: Bool, index1: Int){
-        let b = self.newTask[index1]
-        b.imageBool = Bool1
+        let c = newTask[index1]
         let realm = try! Realm()
         try! realm.write {
-            realm.add(b)
+            c.imageBool = Bool1
+            realm.add(c)
             print(Bool1)
         }
     }
