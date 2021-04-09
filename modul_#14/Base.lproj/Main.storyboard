@@ -129,7 +129,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="GLC-N5-Ijm">
                         <rightBarButtonItems>
-                            <barButtonItem title="Изменить" id="HbO-sJ-Ksy">
+                            <barButtonItem enabled="NO" id="HbO-sJ-Ksy">
                                 <connections>
                                     <action selector="insertButton:" destination="Mkk-de-D3y" id="hPv-Zn-h3G"/>
                                     <segue destination="3yQ-uf-Wgo" kind="unwind" identifier="show3" unwindAction="addButton:" id="iEB-FZ-eez"/>

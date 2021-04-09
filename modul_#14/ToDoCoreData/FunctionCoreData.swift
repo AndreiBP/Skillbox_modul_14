@@ -39,20 +39,13 @@ class FunctionCoreData {
 
         do {
             try TaskTableViewControllerCoreData.contextCoreData.context.save()
-            allObject()
+           allObject()
         }
         catch {
             }
+       
     }
     // добавление в реалм картинки
-    func taskSaveImageTable2(imageBool: ToDoCoreData){
-        TaskTableViewControllerCoreData.contextCoreData.context.delete(imageBool)
-            do {
-                try TaskTableViewControllerCoreData.contextCoreData.context.save()
-            }
-            catch {}
-            }
-    
     func taskSaveImageTable(Bool1: Bool, index1: Int){
         let c = newTaskCR[index1]
         c.imageBool = Bool1
