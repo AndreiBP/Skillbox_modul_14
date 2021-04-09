@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wYw-ZE-uKI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oQm-Le-gVh">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -59,6 +59,101 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-810" y="556"/>
+        </scene>
+        <!--Task Table View Controller Core Data-->
+        <scene sceneID="i21-qQ-mvO">
+            <objects>
+                <tableViewController id="X4B-ob-tmM" customClass="TaskTableViewControllerCoreData" customModule="modul__14" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="t7y-AY-Edr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell1" id="mjj-zE-cRc">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mjj-zE-cRc" id="4hf-iO-hfF">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="X4B-ob-tmM" id="MIr-nZ-vzf"/>
+                            <outlet property="delegate" destination="X4B-ob-tmM" id="784-th-vxg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Mud-wt-yKN">
+                        <barButtonItem key="leftBarButtonItem" title="&lt;-&gt;" id="hjW-zj-Qq4">
+                            <connections>
+                                <action selector="editButton:" destination="X4B-ob-tmM" id="6Ne-o5-sOW"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pnc-wJ-4zX">
+                            <connections>
+                                <action selector="addButton:" destination="X4B-ob-tmM" id="f5U-e8-AnV"/>
+                                <segue destination="Mkk-de-D3y" kind="show" id="mZT-dt-8vk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fZb-Oc-hze" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="168.11594202898553" y="1196.6517857142856"/>
+        </scene>
+        <!--To DoVC Core Data-->
+        <scene sceneID="Vd0-hm-c6c">
+            <objects>
+                <viewController storyboardIdentifier="ccc" id="Mkk-de-D3y" customClass="ToDoVCCoreData" customModule="modul__14" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nug-Lb-KUJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NYE-PN-2L6">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ire-7H-L3n"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NYE-PN-2L6" firstAttribute="leading" secondItem="ire-7H-L3n" secondAttribute="leading" id="9ih-j8-Mxk"/>
+                            <constraint firstItem="ire-7H-L3n" firstAttribute="bottom" secondItem="NYE-PN-2L6" secondAttribute="bottom" id="Aoc-dF-1Bq"/>
+                            <constraint firstItem="ire-7H-L3n" firstAttribute="trailing" secondItem="NYE-PN-2L6" secondAttribute="trailing" id="Pzp-Q7-iD8"/>
+                            <constraint firstItem="NYE-PN-2L6" firstAttribute="top" secondItem="ire-7H-L3n" secondAttribute="top" id="e6M-PV-rfT"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="GLC-N5-Ijm">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Изменить" id="HbO-sJ-Ksy">
+                                <connections>
+                                    <action selector="insertButton:" destination="Mkk-de-D3y" id="hPv-Zn-h3G"/>
+                                    <segue destination="3yQ-uf-Wgo" kind="unwind" identifier="show3" unwindAction="addButton:" id="iEB-FZ-eez"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Сохранить" id="0C2-N6-9g0">
+                                <connections>
+                                    <action selector="SaveButton:" destination="Mkk-de-D3y" id="4f9-hR-yZY"/>
+                                    <segue destination="3yQ-uf-Wgo" kind="unwind" identifier="show2" unwindAction="addButton:" id="ed7-1J-YsB"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="inserBarButtonItem" destination="HbO-sJ-Ksy" id="5xt-DR-qiL"/>
+                        <outlet property="saveDarButtonItem" destination="0C2-N6-9g0" id="avs-nK-dPF"/>
+                        <outlet property="textViewTaskCR" destination="NYE-PN-2L6" id="bFG-1m-iIh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UNb-n7-AAc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="3yQ-uf-Wgo" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="981" y="1196"/>
         </scene>
         <!--ToDoTasks-->
         <scene sceneID="cHW-Yc-dbJ">
@@ -185,8 +280,29 @@
             </objects>
             <point key="canvasLocation" x="-864" y="-123"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="j0T-Yc-jHg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oQm-Le-gVh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sdn-rA-Nr1">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="X4B-ob-tmM" kind="relationship" relationship="rootViewController" id="vfH-kz-gsa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="arr-CB-uHu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-742.02898550724649" y="1196.6517857142856"/>
+        </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -56,7 +56,7 @@ class TaskstableViewController: UITableViewController {
     // обычное заполнение таблицы существующими значениями
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let task  = self.realData.newTask[indexPath.row].task
+        let task = self.realData.newTask[indexPath.row].task
         cell.textLabel?.text = task
             let task2 = self.realData.newTask[indexPath.row].imageBool
             if  task2 == true {
@@ -64,14 +64,6 @@ class TaskstableViewController: UITableViewController {
                 }
     return cell
     }
-    
-    // Override to support editing the table view. - редактирование ячейки
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            taskNew.taskDeleteInt(indexI: indexPath.row)
-//        tableView.reloadData()
-//        }
-//    }
     
     //свайп справа "удаления", установил так же отметку "выполнено"
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -94,11 +86,15 @@ class TaskstableViewController: UITableViewController {
         
         let performed1 = UIContextualAction(style: .destructive, title: "Удалить") {  (contextualAction, view , boolValue) in
             functionTask.shared.taskDeleteInt(indexI: indexPath.row)
+            let cell = tableView.cellForRow(at: indexPath)
+            cell?.imageView?.image = .none
           tableView.reloadData()
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [performed, performed1])
         return swipeActions
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

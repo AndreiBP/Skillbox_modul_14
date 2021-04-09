@@ -23,9 +23,11 @@ class functionTask {
     
     // сохранение редактируемых данны и удаление нажатой ячейки что бы не было копии
     func taskDeleteInt(indexI: Int) {
+      // let tk = newTask[indexI]
         let realm = try! Realm()
         try! realm.write {
             let tk = newTask[indexI]
+           // tk.imageBool = false
             realm.delete(tk) }
     }
     
