@@ -36,16 +36,15 @@ class FunctionCoreData {
     func taskDeleteInt(task: ToDoCoreData, imageBool: ToDoCoreData) {
         TaskTableViewControllerCoreData.contextCoreData.context.delete(task)
         TaskTableViewControllerCoreData.contextCoreData.context.delete(imageBool)
-
+        
         do {
             try TaskTableViewControllerCoreData.contextCoreData.context.save()
-           allObject()
+            allObject()
         }
         catch {
             }
-       
     }
-    // добавление в реалм картинки
+    // добавление в CoreData картинки
     func taskSaveImageTable(Bool1: Bool, index1: Int){
         let c = newTaskCR[index1]
         c.imageBool = Bool1
@@ -54,5 +53,6 @@ class FunctionCoreData {
         }
         catch {}
         }
-
+   
+   
 }

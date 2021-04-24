@@ -88,6 +88,8 @@ class TaskstableViewController: UITableViewController {
             functionTask.shared.taskDeleteInt(indexI: indexPath.row)
             let cell = tableView.cellForRow(at: indexPath)
             cell?.imageView?.image = .none
+            
+            
           tableView.reloadData()
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [performed, performed1])

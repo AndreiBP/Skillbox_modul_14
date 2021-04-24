@@ -12,6 +12,7 @@ class TaskTableViewControllerCoreData: UITableViewController {
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+  
     static let contextCoreData = TaskTableViewControllerCoreData()
     
     var coreData1 = FunctionCoreData.sharedCR
@@ -19,11 +20,12 @@ class TaskTableViewControllerCoreData: UITableViewController {
     var index = 0
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
+        
+        self.tableView.reloadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-            coreData1.allObject()
+           coreData1.allObject()
         self.tableView.reloadData()
         }
 
@@ -45,7 +47,7 @@ class TaskTableViewControllerCoreData: UITableViewController {
             guard let source = unwindSegue.source as? ToDoVCCoreData else { return }
            source.insertButton(Any.self)
             let nT = coreData1.newTaskCR[index]
-            FunctionCoreData.sharedCR.taskDeleteInt(task: nT, imageBool: nT)
+            self.coreData1.taskDeleteInt(task: nT, imageBool: nT)
             tableView.reloadData()
             }
         }
@@ -66,7 +68,7 @@ class TaskTableViewControllerCoreData: UITableViewController {
         if  task2 == true {
                 cell.imageView?.image = UIImage(named: "galka2")
             }
-
+        
         return cell
     }
     //свайп справа "удаления", установил так же отметку "выполнено"
@@ -78,25 +80,33 @@ class TaskTableViewControllerCoreData: UITableViewController {
             
             if  cell?.imageView?.image == .none {
                 cell?.imageView?.image = UIImage(named: "galka2")
-                FunctionCoreData.sharedCR.taskSaveImageTable(Bool1: true, index1: indexPath.row)
+                self.coreData1.taskSaveImageTable(Bool1: true, index1: indexPath.row)
                 tableView.reloadData()
             }  else {
                 cell?.imageView?.image = .none
-                FunctionCoreData.sharedCR.taskSaveImageTable(Bool1: false, index1: indexPath.row)
+                self.coreData1.taskSaveImageTable(Bool1: false, index1: indexPath.row)
                 tableView.reloadData()
             }
         }
         performed.backgroundColor = .darkGray
         
         let performed1 = UIContextualAction(style: .destructive, title: "Удалить") {  (contextualAction, view , boolValue) in
-            
+              
             let cell = tableView.cellForRow(at: indexPath)
             let nT = self.coreData1.newTaskCR[indexPath.row]
-            
-            FunctionCoreData.sharedCR.taskDeleteInt(task: nT, imageBool: nT)
-           
+            self.coreData1.taskDeleteInt(task: nT, imageBool: nT)
             cell?.imageView?.image = .none
+            
+            do {
+                
+                let result = try self.context.fetch(ToDoCoreData.fetchRequest())
+                print(result)
+//                self.coreData1.allObject()
+//                tableView.reloadData()
+            } catch {}
+           
             tableView.reloadData()
+            
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [performed, performed1])
         return swipeActions
@@ -116,4 +126,5 @@ class TaskTableViewControllerCoreData: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
     }
+    
 }
